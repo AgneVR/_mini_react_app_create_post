@@ -1,0 +1,22 @@
+@import './styles/colors';
+@import './styles/mixins';
+
+.container {
+  margin: 0 100px;
+  .nav-bar {
+    padding: 20px 20px;
+    background-color: #d1d1d1;
+    border-radius: 0 0 27px 27px;
+
+    a {
+      color: black;
+      font-weight: 600;
+      margin-right: 20px;
+      text-decoration: none;
+      &:hover {
+        color: #01678f;
+        border-bottom: 2px solid #01678f;
+      }
+    }
+  }
+}

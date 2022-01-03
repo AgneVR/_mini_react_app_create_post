@@ -1,0 +1,35 @@
+form {
+  width: 50%;
+  box-shadow: -1px 0px 19px 2px rgb(38 38 38 / 48%);
+  border-radius: 20px;
+  padding: 30px;
+  box-sizing: border-box;
+
+  .input-style {
+    margin-bottom: 20px;
+    padding: 10px;
+    input {
+      border: none;
+      border-bottom: 2px solid #01678f;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 16px;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  span {
+    font-size: 13px;
+    padding: 3px;
+    color: rgb(145, 4, 4);
+    display: none;
+  }
+}
+input:invalid[focused='true'] {
+  border-bottom: 2px solid rgb(145, 4, 4);
+}
+
+input:invalid[focused='true'] ~ span {
+  display: block;
+}

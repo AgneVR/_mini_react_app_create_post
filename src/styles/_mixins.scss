@@ -1,0 +1,20 @@
+@import 'fonts';
+
+@mixin buttonStyle {
+  border-radius: 26px;
+  color: white;
+  padding: 10px 20px;
+  background: #024b68;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-family: $fontFamily;
+  font-size: 17px;
+  border: 1px solid #024b68;
+
+  &:hover {
+    border: 1px solid #024b68;
+    color: #024b68;
+    background: white;
+  }
+}

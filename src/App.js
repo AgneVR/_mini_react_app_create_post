@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import { useState } from 'react';
+import Home from './pages/Home';
+import AllPost from './pages/AllPost';
+import CreatePost from './pages/CreatePost';
+import EditPost from './pages/EditPost';
+import './App.scss';
 
 function App() {
+  const [allPosts, setAllPosts] = useState([]);
+
+  const handeCreatePost = (post) => {
+    setAllPosts([...allPosts, post]);
+  };
+
+  const updateFormHandler = (post) => {
+    let postIndex = allPosts.findIndex((el) => Number(el.id) === Number(post.id));
+    if (postIndex !== undefined) {
+      let newPosts = [...allPosts];
+      newPosts[postIndex] = post;
+      setAllPosts(newPosts);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <BrowserRouter>
+        <nav className='nav-bar'>
+          <Link to={`/`}>Home</Link>
+          <Link to={`/all-posts`}>All Posts</Link>
+          <Link to={`/create-post`}>Create Post</Link>
+        </nav>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/all-posts' element={<AllPost allPosts={allPosts} />} />
+          <Route path='/create-post' element={<CreatePost onSubmitForm={handeCreatePost} />} />
+          <Route
+            path='/all-posts/:postID'
+            element={<EditPost allPosts={allPosts} onUpdateForm={updateFormHandler} />}
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

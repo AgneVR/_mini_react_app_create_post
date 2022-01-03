@@ -1,0 +1,18 @@
+@import '../styles/mixins';
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  a {
+    @include buttonStyle();
+    text-decoration: none;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 20px;
+  }
+}
